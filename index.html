@@ -8,11 +8,20 @@
   <body>
     HELLO WORLD!
 
+    <button id="enable-notifications">
+      SUBSCRIBE
+    </button>
+
     <script src="https://cdn.notiv.ir/sdk/notiv.min.js"></script>
 <script>
   const notivReady = Notiv.init({
     appId: 'f751a8cf-5f28-4c2d-8728-0e3a3070e9f0',
     apiUrl: "https://api.stage.notiv.ir"
+  });
+
+    document.querySelector('#enable-notifications')?.addEventListener('click', async () => {
+    await notivReady;
+    await Notiv.promptPush({ force: true });
   });
 </script>
     
